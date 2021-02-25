@@ -19,4 +19,29 @@ public class RepositoryEmpleados {
         Query query = this.session.createQuery(hql);
         return query.list();
     }
+    
+    public List<Emp> buscarEmpleadosOficio(String oficio){
+        this.session.beginTransaction();
+        String hql = "from Emp as emp where upper(emp.oficio)='" 
+                + oficio.toUpperCase() + "'";
+        Query query = this.session.createQuery(hql);
+        if (query.list().isEmpty()){
+            return null;
+        }else{
+            return query.list();
+        }
+    }
+    
+    public List<Emp> getEmpleadosDepartamento(int iddepartamento){
+        this.session.beginTransaction();
+        String hql = "from Emp as emp where emp.deptNo=" 
+                + iddepartamento;
+        Query query = this.session.createQuery(hql);
+        if (query.list().isEmpty())
+        {
+            return null;
+        }else{
+            return query.list();
+        }
+    }
 }

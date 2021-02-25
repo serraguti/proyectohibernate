@@ -11,5 +11,7 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="models/Dept.hbm.xml"/>
     <mapping resource="models/Emp.hbm.xml"/>
+    <mapping resource="models/Doctor.hbm.xml"/>
+    <mapping resource="models/Hospital.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

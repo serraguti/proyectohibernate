@@ -29,4 +29,18 @@ public class ControllerEmpleados {
         html += "</table>";
         return html;
     }
+    
+    public String getEmpleadosOficio(String oficio){
+        List<Emp> empleados = this.repo.buscarEmpleadosOficio(oficio);
+        if (empleados == null){
+            //NO HAY DATOS
+            return "<h1 style='color:red'>No existen datos del oficio: " + oficio + "</h1>";
+        }
+        String html = "<ul>";
+        for (Emp emp : empleados){
+            html += "<li>" + emp.getApellido() + "</li>";
+        }
+        html += "</ul>";
+        return html;
+    }
 }

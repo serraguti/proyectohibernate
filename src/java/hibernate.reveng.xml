@@ -4,4 +4,6 @@
   <schema-selection match-schema="SYSTEM"/>
   <table-filter match-name="EMP"/>
   <table-filter match-name="DEPT"/>
+  <table-filter match-name="DOCTOR"/>
+  <table-filter match-name="HOSPITAL"/>
 </hibernate-reverse-engineering>
