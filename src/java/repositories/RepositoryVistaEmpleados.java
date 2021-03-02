@@ -1,6 +1,16 @@
 package repositories;
 
-import java.util.AbstractList;
+/*
+create or replace view vistaempleados
+as
+       select emp.apellido, emp.salario, emp.salario * 12 as anual
+       , emp.oficio,
+       to_char(fecha_alt, 'dd " de " month " de " yyyy') as fechaalta
+       , dept.dnombre as departamento, dept.loc as localidad
+       from emp
+       inner join dept
+       on emp.dept_no = dept.dept_no;
+ */
 import java.util.ArrayList;
 import java.util.List;
 import models.HibernateUtil;
