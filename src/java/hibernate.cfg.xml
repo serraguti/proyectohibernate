@@ -13,5 +13,6 @@
     <mapping resource="models/Emp.hbm.xml"/>
     <mapping resource="models/Doctor.hbm.xml"/>
     <mapping resource="models/Hospital.hbm.xml"/>
+    <mapping resource="models/Vistaempleados.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
