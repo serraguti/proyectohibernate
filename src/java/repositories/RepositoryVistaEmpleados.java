@@ -1,7 +1,10 @@
 package repositories;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 import models.HibernateUtil;
+import models.Vistaempleados;
 import models.VistaempleadosId;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,8 +29,22 @@ public class RepositoryVistaEmpleados {
 
     public List<VistaempleadosId> getVistaEmpleados() {
         this.iniciarTransaccion();
-        String hql = "from VistaempleadosId as vista";
+        //HACEMOS LA CONSULTA SOBRE EL OBJETO MAPEADO
+        String hql = "from Vistaempleados as vista";
         Query query = this.session.createQuery(hql);
-        return query.list();
+        //RECUPERAMOS LOS DATOS DE LA CONSULTA
+        //QUE NO SON LOS DATOS QUE NECESITAMOS
+        List<Vistaempleados> lista = query.list();
+        //LOS DATOS QUE NECESITAMOS ESTAN EN id
+        //POR LO QUE CREAMOS UNA COLECCION MANUAL DE id
+        ArrayList<VistaempleadosId> empleados = new ArrayList<>();
+        //RECORREMOS LA lista Y RECUPERAMOS LOS id
+        for (Vistaempleados v : lista) {
+            //COGEMOS CADA UNO DE LOS DATOS DE EMPLEADO ID
+            VistaempleadosId emp = v.getId();
+            //AÑADIMOS CADA EMPLEADO A LA LISTA CORRECTA
+            empleados.add(emp);
+        }
+        return empleados;
     }
 }
