@@ -1,30 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-mar-2021 16:38:39 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-mar-2021 20:28:42 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="models.Vistaempleados" optimistic-lock="version" schema="SYSTEM" table="VISTAEMPLEADOS">
-    <composite-id class="models.VistaempleadosId" name="id">
-      <key-property name="apellido" type="string">
-        <column length="50" name="APELLIDO"/>
-      </key-property>
-      <key-property name="salario" type="java.lang.Integer">
-        <column name="SALARIO" precision="9" scale="0"/>
-      </key-property>
-      <key-property name="anual" type="big_decimal">
-        <column name="ANUAL" precision="22" scale="0"/>
-      </key-property>
-      <key-property name="oficio" type="string">
-        <column length="50" name="OFICIO"/>
-      </key-property>
-      <key-property name="fechaalta" type="string">
-        <column length="58" name="FECHAALTA"/>
-      </key-property>
-      <key-property name="departamento" type="string">
-        <column length="50" name="DEPARTAMENTO"/>
-      </key-property>
-      <key-property name="localidad" type="string">
-        <column length="50" name="LOCALIDAD"/>
-      </key-property>
-    </composite-id>
-  </class>
+    <class name="models.Vistaempleados" table="VISTAEMPLEADOS" schema="SYSTEM">
+        <composite-id name="id" class="models.VistaempleadosId">
+            <key-property name="apellido" type="string">
+                <column name="APELLIDO" length="50" />
+            </key-property>
+            <key-property name="salario" type="java.lang.Integer">
+                <column name="SALARIO" precision="9" scale="0" />
+            </key-property>
+            <key-property name="anual" type="big_decimal">
+                <column name="ANUAL" precision="22" scale="0" />
+            </key-property>
+            <key-property name="oficio" type="string">
+                <column name="OFICIO" length="50" />
+            </key-property>
+            <key-property name="fechaalta" type="string">
+                <column name="FECHAALTA" length="58" />
+            </key-property>
+            <key-property name="departamento" type="string">
+                <column name="DEPARTAMENTO" length="50" />
+            </key-property>
+            <key-property name="localidad" type="string">
+                <column name="LOCALIDAD" length="50" />
+            </key-property>
+        </composite-id>
+    </class>
 </hibernate-mapping>
