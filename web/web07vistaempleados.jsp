@@ -9,6 +9,12 @@
     </head>
     <body>
         <h1>Vistas Hibernate</h1>
+        <form method="post">
+            <label>Introduzca localidad: </label>
+            <input type="text" name="localidad" required/>
+            <button type="submit">Buscar empleados</button>
+        </form>
+        <hr/>
         <table border="1">
             <thead>
                 <tr>
@@ -22,7 +28,20 @@
                 </tr>
             </thead>
             <tbody>
-                <%=controller.getTablaVistaEmpleados()%>
+                <%
+                String localidad = request.getParameter("localidad");
+                if (localidad == null){
+                    //DIBUJAMOS TODOS LOS DATOS
+                    %>
+                    <%=controller.getTablaVistaEmpleados()%>    
+                    <%
+                }else{
+                    //DIBUJAMOS LOS DATOS DE LA BUSQUEDA
+                    %>
+                    <%=controller.getTablaEmpleadosLocalidad(localidad)%>
+                    <%
+                }
+                %>
             </tbody>
         </table>
     </body>

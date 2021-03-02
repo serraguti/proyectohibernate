@@ -28,4 +28,24 @@ public class Controller07VistaEmpleados {
         }
         return html;
     }
+
+    public String getTablaEmpleadosLocalidad(String localidad) {
+        List<VistaempleadosId> empleados = this.repo.getEmpleadosLocalidad(localidad);
+        if (empleados == null) {
+            return "<h1 style='color:red'>No hay empleados en " + localidad + "</h1>";
+        }
+        String html = "";
+        for (VistaempleadosId emp : empleados) {
+            html += "<tr>";
+            html += "<td>" + emp.getApellido() + "</td>";
+            html += "<td>" + emp.getOficio() + "</td>";
+            html += "<td>" + emp.getDepartamento() + "</td>";
+            html += "<td>" + emp.getFechaalta() + "</td>";
+            html += "<td>" + emp.getLocalidad() + "</td>";
+            html += "<td>" + emp.getSalario() + "</td>";
+            html += "<td>" + emp.getAnual() + "</td>";
+            html += "</tr>";
+        }
+        return html;
+    }
 }

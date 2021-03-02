@@ -47,4 +47,21 @@ public class RepositoryVistaEmpleados {
         }
         return empleados;
     }
+
+    public List<VistaempleadosId> getEmpleadosLocalidad(String localidad) {
+        this.iniciarTransaccion();
+        String hql = "from Vistaempleados as vista where lower(vista.id.localidad)='"
+                + localidad.toLowerCase() + "'";
+        Query query = this.session.createQuery(hql);
+        List<Vistaempleados> lista = query.list();
+        if (lista.isEmpty()) {
+            return null;
+        } else {
+            ArrayList<VistaempleadosId> empleados = new ArrayList<>();
+            for (Vistaempleados v : lista) {
+                empleados.add(v.getId());
+            }
+            return empleados;
+        }
+    }
 }
