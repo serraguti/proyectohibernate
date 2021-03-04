@@ -11,8 +11,9 @@
         <h1>Vista Plantilla Hibernate</h1>
         <form method="post">
             <label>Nombre de hospital</label>
-            <input type="text" name="hospital" placeholder="Nombre de hospital"
-                   required/>
+            <select name="hospital">
+                <%=controller.getSelectHospitales()%>
+            </select>
             <button type="submit">Buscar empleados</button>
         </form>
         <hr/>

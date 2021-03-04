@@ -12,6 +12,7 @@ package repositories;
 import java.util.ArrayList;
 import java.util.List;
 import models.HibernateUtil;
+import models.Hospital;
 import models.Vistaplantilla;
 import models.VistaplantillaId;
 import org.hibernate.Query;
@@ -43,6 +44,7 @@ public class RepositoryVistaPlantilla {
         for (Vistaplantilla v : lista) {
             plantilla.add(v.getId());
         }
+        this.session.close();
         return plantilla;
     }
 
@@ -52,6 +54,7 @@ public class RepositoryVistaPlantilla {
                 + nombre.toLowerCase() + "'";
         Query query = this.session.createQuery(hql);
         List<Vistaplantilla> lista = query.list();
+        this.session.close();
         if (lista.isEmpty()) {
             return null;
         } else {
@@ -61,5 +64,15 @@ public class RepositoryVistaPlantilla {
             }
             return plantilla;
         }
+    }
+
+    public List<Hospital> getHospitales() {
+        this.session.beginTransaction();
+        String hql = "from Hospital as h";
+        Query query = this.session.createQuery(hql);
+        List<Hospital> lista = query.list();
+        System.out.println("Estoy aqui ANTES HOSPITAL...");
+        this.session.close();
+        return lista;
     }
 }

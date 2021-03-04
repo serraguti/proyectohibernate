@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.List;
+import models.Hospital;
 import models.VistaplantillaId;
 import repositories.RepositoryVistaPlantilla;
 
@@ -41,6 +42,16 @@ public class Controller08VistaPlantilla {
             html += "<td>" + plan.getHospital() + "</td>";
             html += "<td>" + plan.getTelefono() + "</td>";
             html += "</tr>";
+        }
+        return html;
+    }
+
+    public String getSelectHospitales() {
+        List<Hospital> hospitales = this.repo.getHospitales();
+        String html = "";
+        for (Hospital h : hospitales) {
+            html += "<option value='" + h.getNombre() + "'>"
+                    + h.getNombre() + "</option>";
         }
         return html;
     }
