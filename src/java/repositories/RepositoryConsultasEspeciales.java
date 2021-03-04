@@ -2,6 +2,7 @@ package repositories;
 
 import java.util.List;
 import models.Dept;
+import models.Emp;
 import models.HibernateUtil;
 import models.ResumenDepartamento;
 import org.hibernate.Query;
@@ -58,5 +59,19 @@ public class RepositoryConsultasEspeciales {
         List<Dept> departamentos = query.list();
         this.session.close();
         return departamentos;
+    }
+
+    public List<Emp> getEmpleadosDepartamento(int id) {
+        this.iniciarTransaccion();
+        String hql = "from Emp as emp where emp.deptNo=?";
+        Query query = this.session.createQuery(hql);
+        query.setParameter(0, id);
+        List<Emp> empleados = query.list();
+        this.session.close();
+        if (empleados.isEmpty()) {
+            return null;
+        } else {
+            return empleados;
+        }
     }
 }

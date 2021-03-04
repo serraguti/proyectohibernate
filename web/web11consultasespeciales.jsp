@@ -23,6 +23,20 @@
             int id = Integer.parseInt(dato);
             %>
             <%=controller.getResumenDepartamento(id)%>
+            <hr/>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Oficio</th>
+                        <th>Salario</th>
+                        <th>Departamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%=controller.getTablaEmpleadosDepartamento(id)%>
+                </tbody>
+            </table>
             <%
         }
         %>

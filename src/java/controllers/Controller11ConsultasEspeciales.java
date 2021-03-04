@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 import models.Dept;
+import models.Emp;
 import models.ResumenDepartamento;
 import repositories.RepositoryConsultasEspeciales;
 
@@ -30,6 +31,24 @@ public class Controller11ConsultasEspeciales {
         for (Dept dept : departamentos) {
             html += "<option value='" + dept.getDeptNo() + "'>"
                     + dept.getDnombre() + "</option>";
+        }
+        return html;
+    }
+
+    public String getTablaEmpleadosDepartamento(int id) {
+        List<Emp> empleados = this.repo.getEmpleadosDepartamento(id);
+        if (empleados == null) {
+            return "<h1 style='color:red'>No hay empleados en el departamento "
+                    + id + "</h1>";
+        }
+        String html = "";
+        for (Emp emp : empleados) {
+            html += "<tr>";
+            html += "<td>" + emp.getApellido() + "</td>";
+            html += "<td>" + emp.getOficio() + "</td>";
+            html += "<td>" + emp.getSalario() + "</td>";
+            html += "<td>" + emp.getDeptNo() + "</td>";
+            html += "</tr>";
         }
         return html;
     }
